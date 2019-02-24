@@ -18,6 +18,7 @@ public:
 	char getData(int i, int j);			//Devuelve datos en el mapa
 	void setFloor(char simbol);			//Establece el simbolo del piso.
 	void mostrar();					//Imprime en pantalla el mapa del mundo.
+	void nc_mostrar(int nc_y, int nc_x);
 	~mapa();
 };
 

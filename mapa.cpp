@@ -1,4 +1,5 @@
 #include <iostream>
+#include "ncurses.h"
 #include "mapa.hpp"
 
 //FUNCIONES DE OBJETO MAPA
@@ -57,7 +58,7 @@ void mapa::erase()					//Borra el mapa.
 
 bool mapa::setData(int i, int j, char data)		//Establece datos en una coordenada en el mapa
 {
-	if(memoria)
+	if(memoria && ((i >= 0 && i < x) && (j>=0 && j<y)))
 	{
 		matriz_mapa[i][j] = data;
 		return true;
@@ -94,6 +95,21 @@ void mapa::mostrar()					//Imprime en pantalla el mapa del mundo.
 			{
 				std::cout << matriz_mapa[i][j];
 				if(j==x-1)	std::cout << std::endl;
+			}
+		}
+	}
+}
+
+void mapa::nc_mostrar(int nc_y, int nc_x)
+{
+	if(memoria)
+	{
+		for(int i=0; i<y; i++)
+		{
+			for(int j=0; j<x; j++)
+			{
+				move(nc_y+i,nc_x+j);
+				printw("%c",matriz_mapa[i][j]);
 			}
 		}
 	}

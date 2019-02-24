@@ -1,0 +1,3 @@
+HOJA DE MISION:
+1-Usar GIT.
+2-Tomar pulsaciones desde el teclado usando ncurses.
