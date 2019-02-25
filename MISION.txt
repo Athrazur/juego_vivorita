@@ -1,3 +1,4 @@
 HOJA DE MISION:
 1-Usar GIT.
 2-Tomar pulsaciones desde el teclado usando ncurses.
+3-Que el objeto movil no escape del mapa. Lograr programar encapsulado, limpio y prolijo.

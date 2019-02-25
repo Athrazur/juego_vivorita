@@ -74,6 +74,7 @@ int main()
 					
 			}
 			gusano.setUbicacion(gus_y, gus_x);
+			mundo.setFloor(VACIO);
 			mundo.setData(gus_y, gus_x, CUERPO);
 			contador++;
 			move(0,0);
