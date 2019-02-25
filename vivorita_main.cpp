@@ -4,10 +4,10 @@
 #include "worm.hpp" //origen del error.
 
 #define ESC	27
-#define ARRIBA	87 //38
-#define ABAJO	83 //40
-#define DER	65 //39
-#define IZQ	68 //37
+#define ARRIBA	119 //38
+#define ABAJO	115 //40
+#define DER	100 //39
+#define IZQ	97 //37
 
 
 #define ANCHO 10
@@ -21,7 +21,7 @@ int main()
 	worm gusano;
 	int gus_x=2;
 	int gus_y=2;
-	char tecla;
+	int tecla;
 	int contador=0;
 	
 	mundo.erase();
@@ -54,28 +54,34 @@ int main()
 		{
 			if(tecla==ARRIBA || tecla==ABAJO || tecla==IZQ || tecla==DER)
 				gusano.setDireccion(tecla);
-			gusano.getUbicacion(&gus_x, &gus_y);
+			gusano.getUbicacion(&gus_y, &gus_x);
 			switch(tecla)
 			{
-				case IZQ:
-					--gus_x;
+				case ARRIBA:	//arriva
+					if(gus_y>0)
+					--gus_y;
 					break;
-				case ARRIBA:
-					++gus_y;
-					break;
-				case DER:
+				case DER:	//izquierda
 					++gus_x;
 					break;
-				case ABAJO:
-					--gus_y;
+				case ABAJO:	//abajo
+					++gus_y;
+					break;
+				case IZQ:	//derecha
+					if(gus_x>0)
+					--gus_x;
 					break;
 					
 			}
-			gusano.setUbicacion(gus_x, gus_y);
-			mundo.setData(gus_x, gus_y, CUERPO);
+			gusano.setUbicacion(gus_y, gus_x);
+			mundo.setData(gus_y, gus_x, CUERPO);
 			contador++;
 			move(0,0);
 			printw("Se cargo nueva ubiacion. %d",contador);
+			move(1,1);
+			printw("coord x:\t%d\tcoord y:\t%d",gus_x,gus_y);
+			move(2,0);
+			printw("tecla:\t%d",tecla);
 		}
 	}
 	while(tecla!=ESC);
